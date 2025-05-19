@@ -11,12 +11,7 @@ pipeline {
         
         stage('Install Dependencies') {
             steps {
-                bat '''
-                    pip install scikit-learn kfp numpy pandas boto3
-                    // pip install kfp
-                    // pip install scikit-learn
-                    // pip install scikit-learn
-                '''
+                bat 'pip install scikit-learn kfp numpy pandas boto3'
             }
         }
         stage('Run Script') {
