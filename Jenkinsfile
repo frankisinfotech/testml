@@ -35,7 +35,8 @@ pipeline {
                     chmod +x ./kubectl
                     ./kubectl version --client
                 """
-            } 
+            }
+        }
         
 
         stage ('Deploy to Cluster') {
