@@ -11,6 +11,7 @@ pipeline {
         
         stage('Install Dependencies') {
             steps {
+                bat 'python --version'
                 bat 'pip install scikit-learn'
             }
         }
