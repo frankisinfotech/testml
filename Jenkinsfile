@@ -5,6 +5,7 @@ pipeline {
         SERVICE_NAME = "testml"
         DOCKERHUB_USERNAME = "frankisinfotech"
         REPOSITORY_TAG = "${DOCKERHUB_USERNAME}/${SERVICE_NAME}:${BUILD_ID}"
+        DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
     }
 
     stages {
