@@ -8,6 +8,7 @@ pipeline {
     }
 
     stages {
+        
         stage('Install Dependencies') {
             steps {
                 sh 'pip install scikit-learn'
@@ -26,6 +27,7 @@ pipeline {
                         docker push ${REPOSITORY_TAG}
                     '''
             }
+        }
         }
 
         stage("Install kubectl"){
