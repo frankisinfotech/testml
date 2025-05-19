@@ -16,7 +16,8 @@ pipeline {
         }
         stage('Run Script') {
             steps {
-                bat 'python3 model.py'
+                bat 'python --version'
+                bat 'python model.py
             }
         }
         stage('Build Image') {
