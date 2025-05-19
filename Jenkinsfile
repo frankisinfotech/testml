@@ -11,18 +11,18 @@ pipeline {
         
         stage('Install Dependencies') {
             steps {
-                sh 'pip install scikit-learn'
+                bat 'pip install scikit-learn'
             }
         }
         stage('Run Script') {
             steps {
-                sh 'python3 model.py'
+                bat 'python3 model.py'
             }
         }
         stage('Build Image') {
             steps {
                  withDockerRegistry([credentialsId: 'DOCKERHUB_USERNAME', url: ""]) {
-                    sh '''
+                    bat '''
                         docker build -t ${REPOSITORY_TAG} .
                         docker push ${REPOSITORY_TAG}
                     '''
@@ -32,7 +32,7 @@ pipeline {
 
         stage("Install kubectl"){
             steps {
-                sh """
+                bat """
                     curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
                     chmod +x ./kubectl
                     ./kubectl version --client
@@ -44,7 +44,7 @@ pipeline {
         stage ('Deploy to Cluster') {
             steps {
                 //sh "aws eks update-kubeconfig --region eu-west-1 --name switch-arca-qa-cluster"
-                sh " envsubst < ${WORKSPACE}/deploy.yaml | ./kubectl apply -f - "
+                bat " envsubst < ${WORKSPACE}/deploy.yaml | ./kubectl apply -f - "
             }
         }
 
