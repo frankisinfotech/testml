@@ -23,7 +23,7 @@ pipeline {
             steps {
                  withDockerRegistry([credentialsId: 'DOCKERHUB_USERNAME', url: ""]) {
                     bat '''
-                        docker context use default
+                        set DOCKER_CONTEXT=docker context use default
                         docker build -t ${REPOSITORY_TAG} .
                         docker push ${REPOSITORY_TAG}
                     '''
