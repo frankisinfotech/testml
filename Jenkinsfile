@@ -21,13 +21,14 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                 withDockerRegistry([credentialsId: 'DOCKERHUB_USERNAME', url: ""]) {
+                 // withDockerRegistry([credentialsId: 'DOCKERHUB_USERNAME', url: ""]) {
                     bat '''
-                        set DOCKER_CONTEXT=docker context use default
+                        // set DOCKER_CONTEXT=docker context use default
+                        echo "$DOCKER_PASSWORD" | docker login -u frankisinfotech --password-stdin
                         docker build -t ${REPOSITORY_TAG} .
                         docker push ${REPOSITORY_TAG}
                     '''
-            }
+         //   }
         }
         }
 
