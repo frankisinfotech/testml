@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
       - name: test-mlapp
-        image: ${REPOSITORY_TAG}
+        image: frankisinfotech/kfp-mlapp:latest
         resources:
           requests:
-             memory: 200Mi
+             memory: 100Mi
              cpu: 0.5
 
         imagePullPolicy: Always
