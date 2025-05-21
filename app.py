@@ -34,7 +34,7 @@ def predict():
     prediction = model.predict(user_input_preprocessed)
     
     # Prepare the output in a JSON-friendly format
-    output = {"Rental Prediction using Built Model V5": float(prediction[0])}
+    output = {"Rental Prediction using Built Model V6": float(prediction[0])}
 
     # Return the prediction as a response
     return output
